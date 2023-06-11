@@ -70,7 +70,7 @@ function HeroHome() {
                     </radialGradient>
                     <circle id="hero-ill-d" cx="384" cy="216" r="64" />
                   </defs>
-               
+
                 </svg>
               </div>
               <button className="absolute top-full flex items-center transform -translate-y-1/2 bg-white rounded-full font-medium group p-4 shadow-lg" onClick={(e) => { e.preventDefault(); setVideoModalOpen(true); }} aria-controls="modal">
