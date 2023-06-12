@@ -1,9 +1,27 @@
-import React from 'https://cdn.skypack.dev/react'; 
+import React, { useState } from 'https://cdn.skypack.dev/react';
 import { Link } from 'https://cdn.skypack.dev/react-router-dom@5.3.0';
+import { useForm } from 'https://cdn.skypack.dev/react-hook-form'
 
 import Header from '../partials/Header';
 
-function SignIn() {
+const SignIn = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const { register, handleSubmit, errors } = useForm()
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+
+  function onSubmit(data) {
+    console.log('Data submitted: ', data)
+  }
+
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
 
@@ -19,16 +37,25 @@ function SignIn() {
 
               {/* Page header */}
               <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-                <h1 className="h1">Welcome back. We exist to make entrepreneurism easier.</h1>
+                <h1 className="h1">Welcome back. Don’t Listen To What They Say, Go See for Yourself.</h1>
               </div>
 
               {/* Form */}
               <div className="max-w-sm mx-auto">
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
-                      <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="email">Email</label>
-                      <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" required />
+                      <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="email">Username</label>
+                      <input id="text" type="text" className="form-input w-full text-gray-800" ref={register({
+                        required: 'Enter your username',
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                          message: 'Enter a valid username',
+                        },
+                      })} />
+                      {
+                        errors.email && <p className="error">{errors.email.message}</p>
+                      }
                     </div>
                   </div>
                   <div className="flex flex-wrap -mx-3 mb-4">
@@ -37,7 +64,7 @@ function SignIn() {
                         <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="password">Password</label>
                         <Link to="reset-password" className="text-sm font-medium text-blue-600 hover:underline">Having trouble signing in?</Link>
                       </div>
-                      <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" required />
+                      <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" value={password} onChange={handlePasswordChange} required />
                     </div>
                   </div>
                   <div className="flex flex-wrap -mx-3 mb-4">
