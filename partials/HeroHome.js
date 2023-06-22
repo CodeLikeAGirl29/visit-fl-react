@@ -2,7 +2,6 @@ import React, { useState } from 'https://cdn.skypack.dev/react';
 import Modal from '../utils/Modal';
 
 function HeroHome() {
-
   const [videoModalOpen, setVideoModalOpen] = useState(false);
 
   return (
