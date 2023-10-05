@@ -1,5 +1,7 @@
 # Visit Florida
 
+[![CodeFactor](https://www.codefactor.io/repository/github/codelikeagirl29/visit-fl-react/badge)](https://www.codefactor.io/repository/github/codelikeagirl29/visit-fl-react)
+
 I created a page displaying fun facts and images all about the amazing US state of Florida. Just to practice using React and React Router with deployment using Netlify.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b5d6a77b-4bbb-4ede-a070-274a886f247d/deploy-status)](https://app.netlify.com/sites/visitflorida/deploys)
